@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>AboutUs</title>
+    <link rel="icon" href="https://www.marx-engels.de/images/images_layout/ME_logo_final.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    html,
+    body {
+        height: 100%;
+    }
+    
+    nav {
+        display: flex;
+        height: 80px;
+        width: 100%;
+        background: #1b1b1b;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 50px 0 100px;
+        flex-wrap: wrap;
+        position: fixed;
+        overflow: hidden;
+        top: 0;
+        z-index: 1;
+    }
+    
+    .logo img {
+        /* color: #fff;
+        font-size: 35px;
+        font-weight: 600; */
+        width: 75px;
+        height: 50px;
+        opacity: 100%;
+        /* position: fixed; */
+        top: 1rem;
+        left: 8rem;
+    }
+    
+    nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+    }
+    
+    nav ul li {
+        margin: 0 5px;
+    }
+    
+    nav ul li a {
+        color: #f2f2f2;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 500;
+        padding: 8px 15px;
+        border-radius: 5px;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+    }
+    
+    nav ul li a.active,
+    nav ul li a:hover {
+        color: #111;
+        background: #fff;
+    }
+    
+    nav .menu-btn i {
+        color: #fff;
+        font-size: 22px;
+        cursor: pointer;
+        display: none;
+    }
+    
+    input[type="checkbox"] {
+        display: none;
+    }
+    
+    @media (max-width: 1000px) {
+        nav {
+            padding: 0 40px 0 50px;
+        }
+    }
+    
+    @media (max-width: 920px) {
+        nav .menu-btn i {
+            display: block;
+        }
+        #click:checked~.menu-btn i:before {
+            content: "\f00d";
+        }
+        nav ul {
+            position: fixed;
+            top: 80px;
+            left: -100%;
+            background: #111;
+            height: 100vh;
+            width: 100%;
+            text-align: center;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        #click:checked~ul {
+            left: 0;
+        }
+        nav ul li {
+            width: 100%;
+            margin: 40px 0;
+        }
+        nav ul li a {
+            width: 100%;
+            margin-left: -100%;
+            display: block;
+            font-size: 20px;
+            transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        #click:checked~ul li a {
+            margin-left: 0px;
+        }
+        nav ul li a.active,
+        nav ul li a:hover {
+            background: none;
+            color: cyan;
+        }
+    }
+    
+    .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        z-index: -1;
+        width: 100%;
+        padding: 0 30px;
+        color: #1b1b1b;
+    }
+    
+    .content div {
+        font-size: 40px;
+        font-weight: 700;
+    }
+    
+    .header-photo {
+        position: relative;
+        text-align: center;
+        color: white;
+        margin-top: 3.5rem;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+    /* .header-photo img {
+        max-width: 100%;
+        max-height: 40rem;
+    } */
+    
+    .hero-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 5rem 0 5rem 0;
+    }
+    
+    .hero-text h1 {
+        font-family: "Baloo Da 2", serif;
+        font-size: 2.5rem;
+        line-height: 2.6rem;
+        font-weight: 400;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
+    .header-photo-container {
+        max-width: 1800px;
+        position: relative;
+        margin: auto;
+    }
+    /* Number text (1/3 etc) */
+    
+    .hero-text {
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        height: 30%;
+        top: 84%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        background: rgb(0, 0, 0);
+        /* Fallback color */
+        background: rgba(0, 0, 0, 0.8);
+        letter-spacing: 3px;
+    }
+    
+    .hero-text button {
+        border: none;
+        outline: 0;
+        display: inline-block;
+        padding: 10px 25px;
+        color: rgb(255, 254, 251);
+        background-color: #c29525;
+        border-radius: 4px;
+        text-align: center;
+        cursor: pointer;
+    }
+    
+    .hero-text button:hover {
+        background-color: #555;
+        color: white;
+    }
+    
+    .contact-us-container {
+        /* display: flexbox; */
+        float: right;
+        margin-left: 100px;
+        width: 30rem;
+        height: 50rem;
+        overflow: auto;
+        margin-top: 10rem;
+    }
+    
+    .underline {
+        width: 12rem;
+        height: 0.2rem;
+        background-color: #c29525;
+        margin-bottom: 0.5rem;
+    }
+    
+    .form {
+        margin-top: 15px;
+    }
+    
+    .contact-us-container h5 {
+        margin-bottom: 1.2rem;
+        font-size: 1.5rem;
+        margin-left: 1rem;
+    }
+    
+    input[type=text],
+    select,
+    textarea {
+        width: 60%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-sizing: border-box;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        resize: vertical;
+    }
+    
+    input[type=submit] {
+        background-color: #04AA6D;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+    
+    .housekeep-container {
+        margin-top: 100px;
+        margin-left: 300px;
+    }
+    
+    .housekeep-heading h1 {
+        font-family: "Baloo Da 2", serif;
+        font-size: 2rem;
+        line-height: 2.6rem;
+        font-weight: 400;
+        margin-bottom: 2rem;
+    }
+    
+    .housekeep-heading p {
+        font-family: "Baloo Da 2", serif;
+        font-size: 1.5rem;
+        line-height: 2.5rem;
+        font-weight: 400;
+        margin-bottom: 2rem;
+        margin-left: 8rem;
+        margin-right: 45rem;
+    }
+    
+    .vl {
+        border-left: 6px solid green;
+        height: 150px;
+        float: left;
+    }
+    /* .vl:after {
+        content: "";
+        display: table;
+        clear: both;
+    } */
+    
+    .housekeep-paragrph {
+        font-family: "Baloo Da 2", serif;
+        font-size: 1.2rem;
+        line-height: 2.5rem;
+        font-weight: 400;
+        margin-top: 5rem;
+        margin-bottom: 2rem;
+        margin-left: 18rem;
+        margin-right: 25rem;
+    }
+    
+    .main-frame {
+        font-family: "Baloo Da 2", serif;
+        width: 1100px;
+        height: 500px;
+        border: 3px solid #ccc;
+        background: #eee;
+        margin: auto;
+        padding: 15px 10px;
+        margin-left: 18rem;
+        margin-top: 1rem;
+    }
+    
+    .image-frame {
+        width: 400px;
+        height: 350px;
+        border: 3px solid #ccc;
+        background: #eee;
+        margin: auto;
+        padding: 15px 10px;
+        float: left;
+        margin-left: 1.5%;
+        margin-top: 5%;
+    }
+    
+    .image-frame img {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .main-frame h3 {
+        font-size: 1.8rem;
+        margin-top: 3rem;
+        margin-left: 30rem;
+        margin-right: 2rem;
+    }
+    
+    .main-frame p {
+        margin-top: 1rem;
+        margin-left: 30rem;
+        margin-right: 2rem;
+        font-size: 1.1rem;
+        line-height: 2.5rem;
+    }
+    
+    .main-frame button {
+        /* background-color: #04AA6D; */
+        display: flexbox;
+        position: absolute;
+        color: #04AA6D;
+        border: transparent;
+        cursor: pointer;
+        margin-left: -1.5rem;
+        margin-top: 1px;
+    }
+    
+    div:hover button {
+        animation: shake 2s;
+    }
+    
+    .main-frame a {
+        font-size: 1rem;
+        margin-top: 1rem;
+        margin-left: 4rem;
+        margin-right: 2rem;
+    }
+    
+    .main-frame h4 {
+        display: flexbox;
+        position: absolute;
+        margin-top: -20px;
+        font-size: 12px;
+        margin-left: 32.5rem;
+    }
+    
+    div:hover h4 {
+        animation: shake 2s;
+    }
+    
+    @keyframes shake {
+        0% {
+            transform: translateX(0)
+        }
+        25% {
+            transform: translateX(25px);
+        }
+        50% {
+            transform: translateX(-25px);
+        }
+        100% {
+            transform: translateX(0px);
+        }
+    }
+    
+    .main-frame1 {
+        font-family: "Baloo Da 2", serif;
+        width: 1100px;
+        height: 600px;
+        border: 3px solid #ccc;
+        background: #eee;
+        margin: auto;
+        padding: 15px 10px;
+        margin-left: 18rem;
+        margin-top: 1rem;
+    }
+    
+    .image-frame1 {
+        width: 400px;
+        height: 350px;
+        border: 3px solid #ccc;
+        background: #eee;
+        margin: auto;
+        padding: 15px 10px;
+        float: left;
+        margin-left: 1.5%;
+        margin-top: 10%;
+    }
+    
+    .image-frame1 img {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .main-frame1 h3 {
+        font-size: 1.8rem;
+        margin-top: 3rem;
+        margin-left: 30rem;
+        margin-right: 2rem;
+    }
+    
+    .main-frame1 p {
+        margin-top: 1rem;
+        margin-left: 30rem;
+        margin-right: 2rem;
+        font-size: 1.1rem;
+        line-height: 2.5rem;
+    }
+    
+    .main-frame1 button {
+        /* background-color: #04AA6D; */
+        display: flexbox;
+        position: absolute;
+        color: #04AA6D;
+        border: transparent;
+        cursor: pointer;
+        margin-left: -1.5rem;
+        margin-top: 1px;
+    }
+    
+    .main-frame1 a {
+        font-size: 1rem;
+        margin-top: 10rem;
+        margin-left: 4rem;
+        margin-right: 2rem;
+        /* float: right; */
+    }
+    
+    .main-frame1 h4 {
+        display: flexbox;
+        position: absolute;
+        margin-top: -20px;
+        font-size: 12px;
+        margin-left: 32.5rem;
+    }
+    
+    .main-container {
+        background: rgba(0, 0, 0, 0.3);
+        margin-top: 3rem;
+        margin-bottom: -9rem;
+    }
+    
+    .tools-container {
+        margin-left: 16rem;
+        margin-right: 40rem;
+    }
+    
+    .key-header p {
+        font-family: "Baloo Da 2", serif;
+        font-size: 1.5rem;
+        line-height: 3rem;
+        margin-bottom: 1rem;
+        /* margin-top: 5rem; */
+    }
+    
+    .key-tools {
+        margin-bottom: 2rem;
+    }
+    
+    .key-tools ul {
+        font-size: 1rem;
+        text-align: justify;
+        margin-left: 12rem;
+        margin-right: 15rem;
+        line-height: 2rem;
+    }
+    
+    .key-tools li {
+        font-size: 1rem;
+        margin-left: 10px;
+        list-style-type: disc;
+    }
+    
+    .last-para {
+        font-family: "muli", serif;
+        font-size: 1.2rem;
+        text-align: justify;
+        margin-left: 12rem;
+        margin-right: 20rem;
+        line-height: 2.5rem;
+        margin-bottom: 9rem;
+    }
+    
+    footer {
+        /* position: fixed; */
+        bottom: 0;
+    }
+    
+    @media (max-height:800px) {
+        footer {
+            position: static;
+        }
+        header {
+            padding-top: 40px;
+        }
+    }
+    
+    .footer-distributed {
+        background-color: #2c292f;
+        box-sizing: border-box;
+        width: 100%;
+        text-align: left;
+        font: bold 16px sans-serif;
+        padding: 50px 50px 60px 50px;
+        margin-top: 80px;
+    }
+    
+    .footer-distributed .footer-left,
+    .footer-distributed .footer-center,
+    .footer-distributed .footer-right {
+        display: inline-block;
+        vertical-align: top;
+    }
+    /* Footer left */
+    
+    .footer-distributed .footer-left {
+        width: 30%;
+    }
+    
+    .footer-distributed h3 {
+        color: #ffffff;
+        font: normal 36px 'Cookie', cursive;
+        margin: 0;
+    }
+    /* The company logo */
+    
+    .footer-distributed .footer-left img {
+        width: 10%;
+    }
+    
+    .footer-distributed h3 span {
+        color: #e0ac1c;
+    }
+    /* Footer links */
+    
+    .footer-distributed .footer-links {
+        color: #ffffff;
+        margin: 20px 0 12px;
+    }
+    
+    .footer-distributed .footer-links a {
+        display: inline-block;
+        line-height: 1.8;
+        text-decoration: none;
+        color: inherit;
+    }
+    
+    .footer-distributed .footer-company-name {
+        color: #8f9296;
+        font-size: 14px;
+        font-weight: normal;
+        margin: 0;
+    }
+    /* Footer Center */
+    
+    .footer-distributed .footer-center {
+        width: 35%;
+    }
+    
+    .footer-distributed .footer-center i {
+        background-color: #33383b;
+        color: #ffffff;
+        font-size: 25px;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 42px;
+        margin: 10px 15px;
+        vertical-align: middle;
+    }
+    
+    .footer-distributed .footer-center i.fa-envelope {
+        font-size: 17px;
+        line-height: 38px;
+    }
+    
+    .footer-distributed .footer-center p {
+        display: inline-block;
+        color: #ffffff;
+        vertical-align: middle;
+        margin: 0;
+    }
+    
+    .footer-distributed .footer-center p span {
+        display: block;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 2;
+    }
+    
+    .footer-distributed .footer-center p a {
+        color: #e0ac1c;
+        text-decoration: none;
+        ;
+    }
+    /* Footer Right */
+    
+    .footer-distributed .footer-right {
+        width: 30%;
+    }
+    
+    .footer-distributed .footer-company-about {
+        line-height: 20px;
+        color: #92999f;
+        font-size: 13px;
+        font-weight: normal;
+        margin: 0;
+    }
+    
+    .footer-distributed .footer-company-about span {
+        display: block;
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    
+    .footer-distributed .footer-icons {
+        margin-top: 25px;
+    }
+    
+    .footer-distributed .footer-icons a {
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+        background-color: #33383b;
+        border-radius: 2px;
+        font-size: 20px;
+        color: #ffffff;
+        text-align: center;
+        line-height: 35px;
+        margin-right: 3px;
+        margin-bottom: 5px;
+    }
+    /* Here is the code for Responsive Footer */
+    /* You can remove below code if you don't want Footer to be responsive */
+    
+    @media (max-width: 880px) {
+        .footer-distributed .footer-left,
+        .footer-distributed .footer-center,
+        .footer-distributed .footer-right {
+            display: block;
+            width: 100%;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .footer-distributed .footer-center i {
+            margin-left: 0;
+        }
+    }
+    
+     ::-webkit-scrollbar {
+        width: 5px;
+    }
+    
+     ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    
+     ::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+    
+     ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+</style>
+
+<body>
+    <nav>
+        <div class="logo">
+            <a href="index.html"><img src="https://www.marx-engels.de/images/images_layout/ME_logo_final.png" alt="logo"> </a>
+        </div>
+        <input type="checkbox" id="click">
+        <label for="click" class="menu-btn">
+        <i class="fas fa-bars"></i>
+      </label>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="AboutUs.html">About Us</a></li>
+            <li><a href="ourservices.html">Services</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact-us.html">Contact Us</a></li>
+        </ul>
+    </nav>
+    <section>
+        <div class="header-photo-container">
+
+            <div class="header-photo">
+                <img src="images/housekeeep.jpg" style="width:100%">
+                <div class="hero-text">
+                    <h1 style="font-size:40px">Industrial Housekeeping Services</h1>
+                    <a href="HIRE.html"><button>Hire us</button></a>
+
+                </div>
+            </div>
+    </section>
+    <section>
+        <div class="contact-us-container">
+            <div class="contactUs">
+                <div class="underline"><span></span></div>
+                <h5>Quick Contact</h5>
+                <form action="contact_us.php" method="post" enctype="multipart/form-data">
+                    <input type="text" id="fname" name="Name" placeholder="Your name.." required>
+
+
+                    <input type="text" id="lname" name="company_name" placeholder="Company name.." required>
+
+
+                    <input type="text" id="country" name="phone" placeholder="Phone number.." required>
+
+
+                    <textarea id="subject" name="message" placeholder="Write something.." style="height:140px"></textarea>
+                    <br>
+                    <input type="submit" value="Submit" required>
+                </form>
+            </div>
+        </div>
+
+
+    </section>
+    <section>
+        <div class="housekeep-container">
+            <div class="housekeep-heading">
+                <h1>Industrial Housekeeping Company India</h1>
+                <div class="vl"></div>
+
+                <p>Housekeeping sevices for: Automobile Industry, Food Industry, Plastic Industry, Educational Instituations, Energy Sector, Bottling Plants, Pharmaceutical Sector and Industrial Housekeeping etc.</p>
+
+            </div>
+
+        </div>
+        <div class="housekeep-paragrph">
+            <p>sufiyan ENTERPRISES suppliers also serve in the field of Industrial Housekeeping and serving our different clients in Delhi NCR (Noida, Gurugram, Faridabad, Gaziyabad) with our services. Moreover, our housekeepers are well trained and professional
+                in their work, they know how to hold the different electronic appliances or sensitive products. <br> <br> Housekeeping is the utmost essential activity of every industry, which makes everyone feel good and is also makes everyone feel good
+                and is also essential for hygiene.</p>
+        </div>
+    </section>
+
+
+
+    <section>
+        <div class="frame">
+            <div class="main-frame">
+                <div class="image-frame">
+                    <img src="images/carpet-cleaning-500x500.jpg" alt="Nature">
+                </div>
+                <h3>
+                    Commercial Housekeeping Services </h3>
+                <p>Rs 1,550 / Person</p>
+                <a href="tel:555-555-5555 ">
+                    <img src="images/call-512.webp" alt="call logo" width="30px" ,height="30px" ;> </a>
+                <button href="tel:555-555-5555 ">Get Latest Price</button>
+
+                <h4>+91 8010982345</h4>
+
+
+                <p>We are involved in presenting an exclusive range of Commercial Housekeeping Services. To cater the client''s requirement in a best possible manner, we are also offering the customized solution for the offered services. The offered collection
+                    is highly appreciated across the industry due to its quality and cost effectiveness.</p>
+
+
+
+            </div>
+
+    </section>
+    <section>
+        <div class="frame ">
+            <div class="main-frame ">
+                <div class="image-frame ">
+                    <img src="images/industrial-housekeeping-services-500x500.jpg " alt="Nature ">
+                </div>
+                <h3>
+                    Industrial Housekeeping Services </h3>
+                <p>Rs 13,500 / Square Feet</p>
+                <a href="tel:555-555-5555 ">
+                    <img src="images/call-512.webp" alt="call logo" width="30px" ,height="30px" ;> </a>
+                <button href="tel:555-555-5555 ">Get Latest Price</button>
+
+                <h4>+91 8010982345</h4>
+                <p>In compliance with market norms and principles, we are actively involved in rendering a wide spectrum Industrial Housekeeping Services to our customers. Offered assortments of these services are rendered using modern technology. Apart
+                    from this, we are providing these services at very affordable prices within the stipulated period of time.</p>
+            </div>
+        </div>
+
+
+
+    </section>
+    <section>
+        <div class="frame ">
+            <div class="main-frame ">
+                <div class="image-frame ">
+                    <img src="images/college-housekeeping-services-500x500.jpg " alt="Nature ">
+                </div>
+                <h3>
+                    College Housekeeping Services</h3>
+                <p>Rs 11,500 / Square Feet(s)</p>
+                <a href="tel:555-555-5555 ">
+                    <img src="images/call-512.webp" alt="call logo" width="30px" ,height="30px" ;> </a>
+                <button href="tel:555-555-5555 ">Get Latest Price</button>
+
+                <h4>+91 9811005093</h4>
+                <p>We are engaged in offering College Housekeeping Services to all customers from schools and institutions. These services are widely applicable in small and large sized schools and colleges. Our workers give complete safety to the area and
+                    work as per the requirement of the patrons. Moreover to this, this housekeeping service is best and praised by the patrons/</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section>
+        <div class="frame ">
+            <div class="main-frame ">
+                <div class="image-frame ">
+                    <img src="images/domestic-housekeeping-services-500x500.jpg " alt="Nature ">
+                </div>
+                <h3>
+                    Domestic Housekeeping Services</h3>
+                <p>Rs 12,500 / Square Feet(s)</p>
+                <a href="tel:555-555-5555 ">
+                    <img src="images/call-512.webp" alt="call logo" width="30px" ,height="30px" ;> </a>
+                <button href="tel:555-555-5555 ">Get Latest Price</button>
+
+                <h4>+91 8010982345</h4>
+                <p>We are providing top class Domestic Housekeeping Services. These services are delivered in agreement with the clients’ requisites to achieve client gratification. In addition, we commence these services only after identifying the given
+                    details of our clients.</p>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="frame1 ">
+            <div class="main-frame1 ">
+                <div class="image-frame1 ">
+                    <img src="images/office-housekeeping-services-500x500.jpg " alt="Nature ">
+                </div>
+                <h3>
+                    Office Housekeeping Services</h3>
+                <p>Rs 12,000 / Square Feet(s)</p>
+                <a href="tel:555-555-5555 ">
+                    <img src="images/call-512.webp" alt="call logo" width="30px" ,height="30px" ;> </a>
+                <button href="tel:555-555-5555 ">Get Latest Price</button>
+
+                <h4>+91 8010982345</h4>
+                <p>Our firm is engaged in providing Commerical Housekeeping Services. These services are provided by highly qualified and experienced professionals in compliance with industrial standards of quality. The housekeeping services offered by us
+                    include various options such as day to day cleaning of the entire premises. These also include deodorizing the toilets, pans, dustbins, buckets and washbasins. These services include hygienic cleaning of the pantry and the kitchen,
+                    apart from the cleaning of light fixture fittings, tubes and fans with various appropriate chemicals. These services also include dusting of furniture.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="frame ">
+            <div class="main-frame ">
+                <div class="image-frame ">
+                    <img src="images/malls-housekeeping-services-500x500.jpg " alt="Nature ">
+                </div>
+                <h3>
+                    Malls Housekeeping Services</h3>
+                <p>Rs 12,000 / Square Feet(s)</p>
+                <a href="tel:555-555-5555 ">
+                    <img src="images/call-512.webp" alt="call logo" width="30px" ,height="30px" ;> </a>
+                <button href="tel:555-555-5555 ">Get Latest Price</button>
+
+                <h4>+91 8010982345</h4>
+                <p>Our organization is offering Mall Housekeeping Services. Our offered services are handled by expert’s team who has rich industry skill and experience. Our presented service is completed in diverse forms that meet on customers demand.</p>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="frame1 ">
+            <div class="main-frame1 ">
+                <div class="image-frame1 ">
+                    <img src="images/hospital-housekeeping-services-500x500.jpg " alt="Nature ">
+                </div>
+                <h3>
+                    Hospital Housekeeping Services</h3>
+                <p>Rs 12,500 / Square Feet(s)</p>
+                <a href="tel:555-555-5555 ">
+                    <img src="images/call-512.webp" alt="call logo" width="30px" ,height="30px" ;> </a>
+                <button href="tel:555-555-5555 ">Get Latest Price</button>
+
+                <h4>+91 8010982345</h4>
+                <p>Our firm is providing Hospital Housekeeping Service. These services are provided by experienced professionals in compliance with the quality standards set by the industry. These housekeeping services are available to clients at budget-friendly
+                    market prices. The various housekeeping activities of the hospital such as cleaning, cooking for the patients, room service, arrangements of medicines and arrangement of the room for the patients is taken care of by the housekeeping
+                    personnel. These services are demanded in hospitals across the country.</p>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="frame ">
+            <div class="main-frame ">
+                <div class="image-frame ">
+                    <img src="images/institutional-housekeeping-services-250x250.jpg " alt="Nature ">
+                </div>
+                <h3>
+                    Institutional Housekeeping Services</h3>
+                <p>Rs 13,500 / Square Feet(s)</p>
+                <a href="tel:555-555-5555 ">
+                    <img src="images/call-512.webp" alt="call logo" width="30px" ,height="30px" ;> </a>
+                <button href="tel:555-555-5555 ">Get Latest Price</button>
+
+                <h4>+91 8010982345</h4>
+                <p>Being a well-known organization with the latest fashion trends, we have come up with an attractive range of Institutional Housekeeping Services. Due to their precision and promptness, these presented services are immensely accredited and
+                    valued in the industry. Furthermore, our valued clients can avail this service from us at leading market prices.</p>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="frame ">
+            <div class="main-frame ">
+                <div class="image-frame ">
+                    <img src="images/hotel-housekeeping-services-250x250.jpg " alt="Nature ">
+                </div>
+                <h3>
+                    Hotel Housekeeping Services</h3>
+                <p>Rs 11,500 / Square Feet(s)</p>
+                <a href="tel:555-555-5555 ">
+                    <img src="images/call-512.webp" alt="call logo" width="30px" ,height="30px" ;> </a>
+                <button href="tel:555-555-5555 ">Get Latest Price</button>
+
+                <h4>+91  8010982345</h4>
+                <p>Our organization is offering Hotel Housekeeping Services. Our offered services are handled by expert’s team who has rich industry skill and experience. Our presented service is completed in diverse forms that meet on customers demand.</p>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="frame ">
+            <div class="main-frame ">
+                <div class="image-frame ">
+                    <img src="images/corporate-housekeeping-services-250x250.jpg " alt="Nature ">
+                </div>
+                <h3>
+                    Corporate Housekeeping Services</h3>
+                <p>Rs 13,500 / Square Feet</p>
+                <a href="tel:555-555-5555 ">
+                    <img src="images/call-512.webp" alt="call logo" width="30px" ,height="30px" ;> </a>
+                <button href="tel:555-555-5555 ">Get Latest Price</button>
+
+                <h4>+91 8010982345</h4>
+                <p>We specialize in offering a wide range of Corporate Housekeeping Services. Without ignoring the demands of our customers, we are spending more time with them to provide these services with accuracy. Moreover, we offer these services to
+                    our valued clients at very reasonable rates.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+        <div class="main-container ">
+            <div class="tools-container ">
+                <div class="key-header ">
+                    <p>A good cleaning always required all the necessary products and equipment that are crucial in the cleaning of a building. <br> Like :</p>
+                </div>
+                <div class="key-tools ">
+                    <ul>
+                        <li>Mop Head Dry Blue</li>
+                        <li>Duster Checked Red</li>
+                        <li>Duster Checked Blue</li>
+                        <li>Duster Glass</li>
+                        <li>Duster Yellow</li>
+                        <li>Brush Toilet</li>
+                        <li>Chock Cleat Pump</li>
+                        <li>Gloves Hand (Orange color)</li>
+                        <li>Sanitary Cubes</li>
+                        <li>Masks (Yellow)</li>
+                        <li>Dust Pan</li>
+                        <li>Goggles Safety</li>
+
+                        <li>Plastic Garbage Bags Big 28 X Black</li>
+                        <li>Plastic Garbage Bags Small 19 X Black</li>
+                        <li>Scotch Brite</li>
+                        <li>Bucket Plastic</li>
+                        <li>Mug Plastic</li>
+                        <li>Spray Bottles</li>
+                        <li>Window Sequeezee 25 cms</li>
+                        <li>Mini Scrapper</li>
+                        <li>pad Scrubbing Green
+                            <li>Toilet Bands</li>
+                            <li>Cobweb Brush</li>
+                            <li>Liq. Soap</li>
+                            <li>M-Fold</li>
+                            <li>Savlon</li>
+                            <li>Tripoli</li>
+
+                            <li>Dettol</li>
+                            <li>Odonil</li>
+                            <li>Phenyl</li>
+                            <li>Lent Free mop</li>
+                            <li>Protozone</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="last-para">
+                <p>
+                    Cleaning is not just removing the dirt, but enhancing aesthetics and increasing assists life. Pooja manpower suppliers are a company with an excellent reputation of outstanding that your premises look beautiful. Our housekeepers will clean everything
+                    from the floor to the ceiling no matter how small or big they are.<br> Our housekeepers or cleaning staff are well dressed, trained, skilled and their goal is to keep your premises sparkling clean and this makes
+                    you satisfied.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer class="footer-distributed ">
+
+        <div class="footer-left ">
+            <img src="https://www.marx-engels.de/images/images_layout/ME_logo_final.png ">
+            <h3>About<span>sufiyan ENTERPRISES</span></h3>
+
+            <p class="footer-links ">
+                <a href="index.html">Home</a> |
+                <a href="gallery.html">Gallery</a> |
+                <a href="AboutUs.html">About</a> |
+                <a href="contact-us.html">Contact</a>
+            </p>
+
+            <p class="footer-company-name ">Copyright © 2022, Madhu Enterprises - All Rights Reserved.</p>
+        </div>
+
+        <div class="footer-center ">
+            <div>
+                <i class="fa fa-map-marker "></i>
+                <p><span>H.N.A 75 , Near Thokar No.6, Opp-dda Flats </span> Shaheen Bagh Delhi - 110025</p>
+            </div>
+
+            <div>
+                <a href="tel: 8010982345 "><i class="fa fa-phone ">
+
+                </i></a>
+
+                <p>+91 8010982345</p>
+            </div>
+            <div>
+                <i class="fa fa-envelope "></i>
+                <p><a href="mailto:support@eduonix.com ">support@kas7860@gmail.com</a></p>
+            </div>
+        </div>
+        <div class="footer-right ">
+            <p class="footer-company-about ">
+                <span>About the company</span> we are offering optimum quality Cleaning Services, Renovation Services, Housekeeping Services, Facility Management Services, Security Manpower Services, Security Guard Services and Office Support Services
+                for our valued customers.</p>
+            <div class="footer-icons ">
+                <a href="https://www.facebook.com" target=_blank><i class=" fa fa-facebook " ></i></a>
+                <a href="https://www.twitter.com " target=_blank><i class="fa fa-twitter "></i></a>
+                <a href="https://www.instagram.com" target=_blank><i class=" fa fa-instagram "></i></a>
+
+                <a href="https://www.youtube.com " target=_blank><i class="fa fa-youtube "></i></a>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>

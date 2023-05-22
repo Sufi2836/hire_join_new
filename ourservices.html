@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ourservices</title>
+    <link rel="icon" href="https://www.marx-engels.de/images/images_layout/ME_logo_final.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    html,
+    body {
+        height: 100%;
+    }
+    
+    nav {
+        display: flex;
+        height: 80px;
+        width: 100%;
+        background: #1b1b1b;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 50px 0 100px;
+        flex-wrap: wrap;
+        position: fixed;
+        overflow: hidden;
+        top: 0;
+        z-index: 1;
+    }
+    
+    .logo img {
+        /* color: #fff;
+        font-size: 35px;
+        font-weight: 600; */
+        width: 75px;
+        height: 50px;
+        opacity: 100%;
+        /* position: fixed; */
+        top: 1rem;
+        left: 8rem;
+    }
+    
+    nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+    }
+    
+    nav ul li {
+        margin: 0 5px;
+    }
+    
+    nav ul li a {
+        color: #f2f2f2;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 500;
+        padding: 8px 15px;
+        border-radius: 5px;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+    }
+    
+    nav ul li a.active,
+    nav ul li a:hover {
+        color: #111;
+        background: #fff;
+    }
+    
+    nav .menu-btn i {
+        color: #fff;
+        font-size: 22px;
+        cursor: pointer;
+        display: none;
+    }
+    
+    input[type="checkbox"] {
+        display: none;
+    }
+    
+    @media (max-width: 1000px) {
+        nav {
+            padding: 0 40px 0 50px;
+        }
+    }
+    
+    @media (max-width: 920px) {
+        nav .menu-btn i {
+            display: block;
+        }
+        #click:checked~.menu-btn i:before {
+            content: "\f00d";
+        }
+        nav ul {
+            position: fixed;
+            top: 80px;
+            left: -100%;
+            background: #111;
+            height: 100vh;
+            width: 100%;
+            text-align: center;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        #click:checked~ul {
+            left: 0;
+        }
+        nav ul li {
+            width: 100%;
+            margin: 40px 0;
+        }
+        nav ul li a {
+            width: 100%;
+            margin-left: -100%;
+            display: block;
+            font-size: 20px;
+            transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        #click:checked~ul li a {
+            margin-left: 0px;
+        }
+        nav ul li a.active,
+        nav ul li a:hover {
+            background: none;
+            color: cyan;
+        }
+    }
+    
+    .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        z-index: -1;
+        width: 100%;
+        padding: 0 30px;
+        color: #1b1b1b;
+    }
+    
+    .content div {
+        font-size: 40px;
+        font-weight: 700;
+    }
+    
+    .header-photo {
+        position: relative;
+        text-align: center;
+        color: white;
+        margin-top: 3.5rem;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+    /* .header-photo img {
+        max-width: 100%;
+        max-height: 40rem;
+    } */
+    
+    .hero-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 5rem 0 5rem 0;
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        height: 30%;
+        top: 84%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        background: rgb(0, 0, 0);
+        /* Fallback color */
+        background: rgba(0, 0, 0, 0.8);
+        letter-spacing: 3px;
+    }
+    
+    .hero-text h1 {
+        font-family: "Baloo Da 2", serif;
+        font-size: 2.5rem;
+        line-height: 2.6rem;
+        font-weight: 400;
+        margin-bottom: 1rem;
+        margin-top: -2rem;
+        text-align: center;
+    }
+    
+    .header-photo-container {
+        max-width: 1800px;
+        position: relative;
+        margin: auto;
+    }
+    
+    .hero-text button {
+        border: none;
+        outline: 0;
+        display: inline-block;
+        padding: 10px 25px;
+        color: rgb(255, 254, 251);
+        background-color: #c29525;
+        border-radius: 4px;
+        text-align: center;
+        cursor: pointer;
+    }
+    
+    .hero-text button:hover {
+        background-color: #555;
+        color: white;
+    }
+    /* services */
+    
+    .Services-container {
+        margin-top: 10rem;
+        margin-left: 10rem;
+        color: rgba(0, 0, 0, 0.7);
+    }
+    
+    .Service-heading h1 {
+        font-family: "Baloo Da 2", sans-serif;
+        font-size: 1.8rem;
+        line-height: 2.6rem;
+        font-weight: 0;
+        margin-bottom: 2rem;
+        color: #111;
+    }
+    
+    .Service-heading p {
+        font-family: "Baloo Da 2", serif;
+        font-size: 1.6rem;
+        line-height: 2.6rem;
+        font-weight: 400;
+        margin-bottom: 2rem;
+        margin-right: 40rem;
+    }
+    
+    .Service-heading1 h1 {
+        font-family: "Baloo Da 2", sans-serif;
+        font-size: 1.5rem;
+        line-height: 2.6rem;
+        font-weight: 0;
+        margin-top: 5rem;
+        margin-bottom: 2rem;
+        color: #111;
+    }
+    
+    .Service-heading1 p {
+        font-family: "Baloo Da 2", serif;
+        font-size: 1.5rem;
+        line-height: 2.8rem;
+        letter-spacing: 1px;
+        font-weight: 400;
+        margin-bottom: 2rem;
+        margin-right: 40rem;
+    }
+    
+    .Service-heading1 button {
+        border: none;
+        background-color: transparent;
+        color: #04AA6D;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+    /* eb\nd */
+    
+    .security-container,
+    .security-container1 {
+        margin-top: 100px;
+        margin-left: 250px;
+        color: rgba(0, 0, 0, 0.7);
+    }
+    
+    .security-heading h1 {
+        font-family: "Baloo Da 2", serif;
+        font-size: 2rem;
+        line-height: 2.6rem;
+        font-weight: 0;
+        margin-bottom: 2rem;
+        color: #111;
+    }
+    
+    .security-heading p,
+    .security-heading1 p {
+        font-family: "Baloo Da 2", serif;
+        font-size: 1.6rem;
+        line-height: 2.6rem;
+        font-weight: 400;
+        margin-bottom: 2rem;
+        margin-right: 40rem;
+    }
+    
+    .security-paragrph {
+        font-family: "Baloo Da 2", serif;
+        font-size: 1.5rem;
+        line-height: 2.5rem;
+        font-weight: 400;
+        margin-top: 5rem;
+        margin-bottom: 2rem;
+        margin-right: 40rem;
+    }
+    
+    .security-heading1 h3 {
+        font-size: 1.8rem;
+        line-height: 2.6rem;
+        font-weight: 0;
+        margin-bottom: 2rem;
+        color: #111;
+    }
+    /* Contact us css */
+    
+    .contact-us-container {
+        /* display: flexbox; */
+        float: right;
+        /* margin-left: 100px; */
+        width: 30rem;
+        height: 50rem;
+        overflow: auto;
+        margin-top: 10rem;
+    }
+    
+    .underline {
+        width: 12rem;
+        height: 0.2rem;
+        background-color: #c29525;
+        margin-bottom: 0.5rem;
+    }
+    
+    .form {
+        margin-top: 15px;
+    }
+    
+    .contact-us-container h5 {
+        margin-bottom: 1.2rem;
+        font-size: 1.5rem;
+        margin-left: 1rem;
+    }
+    
+    input[type=text],
+    select,
+    textarea {
+        width: 60%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-sizing: border-box;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        resize: vertical;
+    }
+    
+    input[type=submit] {
+        background-color: #04AA6D;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+    /*  */
+    
+    .container-tips {
+        margin-top: 100px;
+        margin-left: 18rem;
+    }
+    
+    .tips p {
+        font-family: "Baloo Da 2", serif;
+        font-size: 1.5rem;
+        line-height: 2.6rem;
+        font-weight: 400;
+        margin-bottom: 8rem;
+        margin-left: 5rem;
+        margin-right: 40rem;
+    }
+    
+    .vl {
+        border-left: 6px solid green;
+        height: 6rem;
+        float: left;
+    }
+    
+    .footer-distributed {
+        background-color: #2c292f;
+        box-sizing: border-box;
+        width: 100%;
+        text-align: left;
+        font: bold 16px sans-serif;
+        padding: 50px 50px 60px 50px;
+        /* margin-top: 1rem; */
+    }
+    
+    .footer-distributed .footer-left,
+    .footer-distributed .footer-center,
+    .footer-distributed .footer-right {
+        display: inline-block;
+        vertical-align: top;
+    }
+    /* Footer left */
+    
+    .footer-distributed .footer-left {
+        width: 30%;
+    }
+    
+    .footer-distributed h3 {
+        color: #ffffff;
+        font: normal 36px 'Cookie', cursive;
+        margin: 0;
+    }
+    /* The company logo */
+    
+    .footer-distributed .footer-left img {
+        width: 10%;
+    }
+    
+    .footer-distributed h3 span {
+        color: #e0ac1c;
+    }
+    /* Footer links */
+    
+    .footer-distributed .footer-links {
+        color: #ffffff;
+        margin: 20px 0 12px;
+    }
+    
+    .footer-distributed .footer-links a {
+        display: inline-block;
+        line-height: 1.8;
+        text-decoration: none;
+        color: inherit;
+    }
+    
+    .footer-distributed .footer-company-name {
+        color: #8f9296;
+        font-size: 14px;
+        font-weight: normal;
+        margin: 0;
+    }
+    /* Footer Center */
+    
+    .footer-distributed .footer-center {
+        width: 35%;
+    }
+    
+    .footer-distributed .footer-center i {
+        background-color: #33383b;
+        color: #ffffff;
+        font-size: 25px;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 42px;
+        margin: 10px 15px;
+        vertical-align: middle;
+    }
+    
+    .footer-distributed .footer-center i.fa-envelope {
+        font-size: 17px;
+        line-height: 38px;
+    }
+    
+    .footer-distributed .footer-center p {
+        display: inline-block;
+        color: #ffffff;
+        vertical-align: middle;
+        margin: 0;
+    }
+    
+    .footer-distributed .footer-center p span {
+        display: block;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 2;
+    }
+    
+    .footer-distributed .footer-center p a {
+        color: #e0ac1c;
+        text-decoration: none;
+        ;
+    }
+    /* Footer Right */
+    
+    .footer-distributed .footer-right {
+        width: 30%;
+    }
+    
+    .footer-distributed .footer-company-about {
+        line-height: 20px;
+        color: #92999f;
+        font-size: 13px;
+        font-weight: normal;
+        margin: 0;
+    }
+    
+    .footer-distributed .footer-company-about span {
+        display: block;
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    
+    .footer-distributed .footer-icons {
+        margin-top: 25px;
+    }
+    
+    .footer-distributed .footer-icons a {
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+        background-color: #33383b;
+        border-radius: 2px;
+        font-size: 20px;
+        color: #ffffff;
+        text-align: center;
+        line-height: 35px;
+        margin-right: 3px;
+        margin-bottom: 5px;
+    }
+    /* Here is the code for Responsive Footer */
+    /* You can remove below code if you don't want Footer to be responsive */
+    
+    @media (max-width: 880px) {
+        .footer-distributed .footer-left,
+        .footer-distributed .footer-center,
+        .footer-distributed .footer-right {
+            display: block;
+            width: 100%;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .footer-distributed .footer-center i {
+            margin-left: 0;
+        }
+    }
+    
+    .scroll-btn {
+        position: fixed;
+        right: 4rem;
+        bottom: 4rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        background-color: #e2b646;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        color: #fff;
+        box-shadow: 0 0.1rem 0.6rem rgba(0, 0, 0, 0.2);
+        border-radius: 0.3rem;
+    }
+    
+    .scroll-btn:hover {
+        cursor: pointer;
+        background-color: #eba800;
+    }
+    
+     ::-webkit-scrollbar {
+        width: 5px;
+    }
+    
+     ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    
+     ::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+    
+     ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+</style>
+
+<body>
+    <nav>
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://www.marx-engels.de/images/images_layout/ME_logo_final.png" alt="logo">
+            </a>
+        </div>
+        <input type="checkbox" id="click">
+        <label for="click" class="menu-btn">
+        <i class="fas fa-bars"></i>
+      </label>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="AboutUs.html">About Us</a></li>
+            <li><a class="active" href="#">Services</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact-us.html">Contact Us</a></li>
+        </ul>
+    </nav>
+    <section>
+        <div class="header-photo-container">
+
+            <div class="header-photo">
+                <img src="images/manpower_supply.webp" style="width:100%">
+                <div class="hero-text">
+                    <h1 style="font-size:40px">Services</h1>
+                </div>
+            </div>
+    </section>
+    <section>
+        <div class="contact-us-container">
+            <div class="contactUs">
+                <div class="underline"><span></span></div>
+                <h5>Quick Contact</h5>
+                <form action="contact_us.php" method="post" enctype="multipart/form-data">
+
+                    <input type="text" id="fname" name="Name" placeholder="Your name..">
+
+
+                    <input type="text" id="lname" name="company_name" placeholder="Company name..">
+
+
+                    <input type="text" id="country" name="phone" placeholder="Phone number..">
+
+
+                    <textarea id="subject" name="message" placeholder="Write something.." style="height:140px"></textarea>
+                    <br>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+
+
+    </section>
+    <section>
+        <div class="Services-container">
+            <div class="Service-heading">
+                <h1>Get to Know More About Our Services</h1>
+
+
+                <p>sufiyan ENTERPRISES are providing manpower services to its valuable clients on PAN India. We are happy to serve our fortune 500 clients, many MNCs and local institutions with the following services:</p>
+
+
+            </div>
+            <div class="Service-heading1">
+                <h1>Manpower Supply</h1>
+                <p> This is the core part of Our company sufiyan ENTERPRISES; our team is highly characterized by professional. madhuent manpower supplier is one of the finest companies in the field of manpower supply in India. sufiyan ENTERPRISES established
+                    in 2005 in <b>Delhi</b> and now it is working all over India. Every big and small company required skilled or unskilled labor, in all those cases Madhuent is there to help you out.</p>
+                <a href="manpower.html"><button>read more...</button></a>
+
+            </div>
+            <div class="Service-heading1">
+                <h1>Industrial Housekeeping Services</h1>
+                <p> Madhuent Manpower suppliers also serve the Industrial housekeeping services to the client companies or the contractors. Moreover, our housekeepers are well trained and professional in their work, they know how to hold the different electronic
+                    appliances or sensitive products.</p>
+                <!-- <button onClick="window.location.href='http://192.168.1.9:5500/MadhuEnterprises/Housekeeping.html' ;">read more...</button> -->
+                <a href="Housekeeping.html"><button>read more...</button></a>
+
+            </div>
+            <div class="Service-heading1">
+                <h1>Contract Labour</h1>
+                <p> Contract Labour It means someone who signs a deal with you for providing any type of specified labor work. It is very crucial for the starting, continual and till the end of a successful project. it can be any of the projects that require
+                    a good amount of labor.</p>
+                <a href="Contract Labour.html"><button>read more...</button></a>
+
+            </div>
+            <div class="Service-heading1">
+                <h1>Skilled, Semi-Skilled & Unskilled Labor</h1>
+                <p> Skill is an evolution of a person’s proficiency, wages, and the specialization in a field. Skilled employees usually get higher salaries and rank because they are more trained and responsible as compared to unskilled workers in the company.
+                    A worker who is carpenter, fitter, welder, bakers, coopers etc comes in skilled labor category.</p>
+                <a href="skilled-semiskilled-labour.html"><button>read more...</button></a>
+
+            </div>
+
+    </section>
+
+    <section>
+        <div class="container-tips">
+            <div class="tips">
+
+                <div class="vl"></div>
+
+                <p>Apart from this; we provide customization of these services so that it just fit into you budget. Please feel free to contact us.</p>
+
+
+            </div>
+    </section>
+
+    <footer class="footer-distributed ">
+
+        <div class="footer-left ">
+            <a href="index.html">
+                <img src="https://www.marx-engels.de/images/images_layout/ME_logo_final.png ">
+            </a>
+
+            <h3>About<span>sufiyan ENTERPRISES</span></h3>
+
+            <p class="footer-links ">
+                <a href="index.html">Home</a> |
+                <a href="gallery.html">Gallery</a> |
+                <a href="AboutUs.html">About</a> |
+                <a href="contact-us.html">Contact</a>
+            </p>
+
+            <p class="footer-company-name ">Copyright © 2022,sufiyan ENTERPRISES - All Rights Reserved.</p>
+        </div>
+
+        <div class="footer-center ">
+            <div>
+                <i class="fa fa-map-marker "></i>
+                <p><span>H.N. A 75 GF, Near Thokar no.6 , Opp-dda Flats </span> Shaheen Bagh Delhi - 110025</p>
+            </div>
+
+            <div>
+                <a href="tel:8010982345 "><i class="fa fa-phone ">
+
+                </i></a>
+
+                <p>+91 8010982345</p>
+            </div>
+            <div>
+                <i class="fa fa-envelope "></i>
+                <p><a href="mailto:support@eduonix.com ">support@kas7860@gmail.com</a></p>
+            </div>
+        </div>
+        <div class="footer-right ">
+            <p class="footer-company-about ">
+                <span>About the company</span> we are offering optimum quality Cleaning Services, Renovation Services, Housekeeping Services, Facility Management Services, Security Manpower Services, Security Guard Services and Office Support Services
+                for our valued customers.</p>
+            <div class="footer-icons ">
+                <a href="https://www.facebook.com" target=_blank><i class=" fa fa-facebook " ></i></a>
+                <a href="https://www.twitter.com " target=_blank><i class="fa fa-twitter "></i></a>
+                <a href="https://www.instagram.com" target=_blank><i class=" fa fa-instagram "></i></a>
+
+                <a href="https://www.youtube.com " target=_blank><i class="fa fa-youtube "></i></a>
+            </div>
+        </div>
+    </footer>
+    <a href="#" class="scroll-btn">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        document.querySelector(".scroll-btn").addEventListener("click", () => {
+            document.querySelector("html").style.scrollBehavior = "smooth";
+            setTimeout(() => {
+                document.querySelector("html").style.scrollBehavior = "unset";
+            }, 1000);
+        });
+    </script>
+
+</body>
+
+</html>

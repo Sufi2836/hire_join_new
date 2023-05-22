@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>AboutUs</title>
+    <link rel="icon" href="https://www.marx-engels.de/images/images_layout/ME_logo_final.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    html,
+    body {
+        height: 100%;
+    }
+    /* custom scroll bar */
+    
+     ::-webkit-scrollbar {
+        width: 10px;
+    }
+    
+     ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    
+     ::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+    
+     ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+    
+    nav {
+        display: flex;
+        height: 80px;
+        width: 100%;
+        background: #1b1b1b;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 50px 0 100px;
+        flex-wrap: wrap;
+        position: fixed;
+        overflow: hidden;
+        top: 0;
+        z-index: 1;
+    }
+    
+    .logo img {
+        /* color: #fff;
+        font-size: 35px;
+        font-weight: 600; */
+        width: 75px;
+        height: 50px;
+        opacity: 100%;
+        /* position: fixed; */
+        top: 1rem;
+        left: 8rem;
+    }
+    
+    nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+    }
+    
+    nav ul li {
+        margin: 0 5px;
+    }
+    
+    nav ul li a {
+        color: #f2f2f2;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 500;
+        padding: 8px 15px;
+        border-radius: 5px;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+    }
+    
+    nav ul li a.active,
+    nav ul li a:hover {
+        color: #111;
+        background: #fff;
+    }
+    
+    nav .menu-btn i {
+        color: #fff;
+        font-size: 22px;
+        cursor: pointer;
+        display: none;
+    }
+    
+    input[type="checkbox"] {
+        display: none;
+    }
+    
+    @media (max-width: 1000px) {
+        nav {
+            padding: 0 40px 0 50px;
+        }
+    }
+    
+    @media (max-width: 920px) {
+        nav .menu-btn i {
+            display: block;
+        }
+        #click:checked~.menu-btn i:before {
+            content: "\f00d";
+        }
+        nav ul {
+            position: fixed;
+            top: 80px;
+            left: -100%;
+            background: #111;
+            height: 100vh;
+            width: 100%;
+            text-align: center;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        #click:checked~ul {
+            left: 0;
+        }
+        nav ul li {
+            width: 100%;
+            margin: 40px 0;
+        }
+        nav ul li a {
+            width: 100%;
+            margin-left: -100%;
+            display: block;
+            font-size: 20px;
+            transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        #click:checked~ul li a {
+            margin-left: 0px;
+        }
+        nav ul li a.active,
+        nav ul li a:hover {
+            background: none;
+            color: cyan;
+        }
+    }
+    
+    .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        z-index: -1;
+        width: 100%;
+        padding: 0 30px;
+        color: #1b1b1b;
+    }
+    
+    .content div {
+        font-size: 40px;
+        font-weight: 700;
+    }
+    
+    .header-photo-container {
+        max-width: 1800px;
+        position: relative;
+        margin: auto;
+    }
+    
+    .header-photo img {
+        position: relative;
+        text-align: center;
+        color: white;
+        margin-top: 3.5rem;
+        filter: blur(1px);
+        -webkit-filter: blur(2px);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    /* .header-photo img {
+        max-width: 100%;
+        max-height: 40rem;
+    } */
+    
+    .hero-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0 2rem 0;
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        height: 30%;
+        top: 84%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        letter-spacing: 3px;
+        /* /* background-color: rgb(0, 0, 0); */
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+    
+    .hero-text h1 {
+        font-family: "Baloo Da 2", serif;
+        font-size: 2.5rem;
+        line-height: 2.6rem;
+        font-weight: 5000;
+        margin-bottom: 2rem;
+        text-shadow: #111;
+    }
+    
+    .map-container {
+        float: left;
+        /* position: absolute; */
+        /* display: grid; */
+        padding: 10px;
+        font-family: "Baloo Da 2", serif;
+        width: 1000px;
+        height: 700px;
+        border: none;
+        background: transparent;
+        margin: auto;
+        padding: 15px 10px;
+        margin-left: 8rem;
+        margin-top: 4rem;
+        /* float: right; */
+        margin-right: 10%;
+        margin-bottom: 3rem;
+        /* border-radius: 20px; */
+    }
+    
+    .map {
+        width: 100%;
+    }
+    
+    .map::after {
+        clear: left;
+    }
+    
+    .contact-us-container::after {
+        clear: right;
+    }
+    
+    .contact-us-container {
+        /* display: flexbox; */
+        float: right;
+        /* margin-left: 100px; */
+        width: 30rem;
+        height: 50rem;
+        overflow: auto;
+        margin-top: 10rem;
+    }
+    
+    .underline {
+        width: 12rem;
+        height: 0.2rem;
+        background-color: #c29525;
+        margin-bottom: 0.5rem;
+    }
+    
+    .form {
+        margin-top: 15px;
+    }
+    
+    .contact-us-container h5 {
+        margin-bottom: 1.2rem;
+        font-size: 1.5rem;
+        margin-left: 1rem;
+    }
+    
+    input[type=text],
+    select,
+    textarea {
+        width: 60%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-sizing: border-box;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        resize: vertical;
+    }
+    
+    input[type=submit] {
+        background-color: #04AA6D;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+    
+    .last-container {
+        float: left;
+    }
+    
+    .last-container {
+        margin-left: 9rem;
+    }
+    
+    .last-details-left {
+        float: left;
+        margin-right: 10rem;
+    }
+    
+    .last-details-left h3 {
+        font-size: 2.2rem;
+    }
+    
+    .last-details-left h2 {
+        font-size: 1.5rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .last-details-left p {
+        color: rgba(0, 0, 0, 0.8);
+        font-size: 1.5rem;
+        line-height: 3rem;
+    }
+    
+    .last-details-right {
+        float: right;
+    }
+    
+    .para1 {
+        margin-top: 4rem;
+    }
+    
+    .last-details-right p {
+        color: rgba(0, 0, 0, 0.8);
+        font-size: 1.5rem;
+        line-height: 3rem;
+    }
+    
+    .last-container::after {
+        clear: both;
+    }
+    
+    .under-line {
+        margin-top: 75rem;
+        width: 75rem;
+        height: 0.2rem;
+        background-color: #c29525;
+        margin-bottom: 0.5rem;
+        margin-left: 8rem;
+    }
+    
+    .under-line1 {
+        margin-top: 0.2rem;
+        width: 75rem;
+        height: 0.2rem;
+        background-color: #c29525;
+        margin-bottom: 0.5rem;
+        margin-left: 8rem;
+    }
+    
+    .footer-distributed {
+        background-color: #2c292f;
+        box-sizing: border-box;
+        width: 100%;
+        text-align: left;
+        font: bold 16px sans-serif;
+        padding: 50px 50px 60px 50px;
+        margin-top: 80px;
+    }
+    
+    .footer-distributed .footer-left,
+    .footer-distributed .footer-center,
+    .footer-distributed .footer-right {
+        display: inline-block;
+        vertical-align: top;
+    }
+    /* Footer left */
+    
+    .footer-distributed .footer-left {
+        width: 30%;
+    }
+    
+    .footer-distributed h3 {
+        color: #ffffff;
+        font: normal 36px 'Cookie', cursive;
+        margin: 0;
+    }
+    /* The company logo */
+    
+    .footer-distributed .footer-left img {
+        width: 10%;
+    }
+    
+    .footer-distributed h3 span {
+        color: #e0ac1c;
+    }
+    /* Footer links */
+    
+    .footer-distributed .footer-links {
+        color: #ffffff;
+        margin: 20px 0 12px;
+    }
+    
+    .footer-distributed .footer-links a {
+        display: inline-block;
+        line-height: 1.8;
+        text-decoration: none;
+        color: inherit;
+    }
+    
+    .footer-distributed .footer-company-name {
+        color: #8f9296;
+        font-size: 14px;
+        font-weight: normal;
+        margin: 0;
+    }
+    /* Footer Center */
+    
+    .footer-distributed .footer-center {
+        width: 35%;
+    }
+    
+    .footer-distributed .footer-center i {
+        background-color: #33383b;
+        color: #ffffff;
+        font-size: 25px;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 42px;
+        margin: 10px 15px;
+        vertical-align: middle;
+    }
+    
+    .footer-distributed .footer-center i.fa-envelope {
+        font-size: 17px;
+        line-height: 38px;
+    }
+    
+    .footer-distributed .footer-center p {
+        display: inline-block;
+        color: #ffffff;
+        vertical-align: middle;
+        margin: 0;
+    }
+    
+    .footer-distributed .footer-center p span {
+        display: block;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 2;
+    }
+    
+    .footer-distributed .footer-center p a {
+        color: #e0ac1c;
+        text-decoration: none;
+        ;
+    }
+    /* Footer Right */
+    
+    .footer-distributed .footer-right {
+        width: 30%;
+    }
+    
+    .footer-distributed .footer-company-about {
+        line-height: 20px;
+        color: #92999f;
+        font-size: 13px;
+        font-weight: normal;
+        margin: 0;
+    }
+    
+    .footer-distributed .footer-company-about span {
+        display: block;
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    
+    .footer-distributed .footer-icons {
+        margin-top: 25px;
+    }
+    
+    .footer-distributed .footer-icons a {
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+        background-color: #33383b;
+        border-radius: 2px;
+        font-size: 20px;
+        color: #ffffff;
+        text-align: center;
+        line-height: 35px;
+        margin-right: 3px;
+        margin-bottom: 5px;
+    }
+    /* Here is the code for Responsive Footer */
+    /* You can remove below code if you don't want Footer to be responsive */
+    
+    @media (max-width: 880px) {
+        .footer-distributed .footer-left,
+        .footer-distributed .footer-center,
+        .footer-distributed .footer-right {
+            display: block;
+            width: 100%;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .footer-distributed .footer-center i {
+            margin-left: 0;
+        }
+    }
+    
+     ::-webkit-scrollbar {
+        width: 5px;
+    }
+    
+     ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    
+     ::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+    
+     ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+</style>
+
+<body>
+    <nav>
+        <div class="logo">
+            <a href="index.html"><img src="https://www.marx-engels.de/images/images_layout/ME_logo_final.png" alt="logo"></a>
+
+        </div>
+        <input type="checkbox" id="click">
+        <label for="click" class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="AboutUs.html">About Us</a></li>
+            <li><a href="ourservices.html">Services</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a class="active" href="#">Contact Us</a></li>
+        </ul>
+    </nav>
+    <section>
+        <div class="header-photo-container">
+
+            <div class="header-photo">
+                <img src="images/map.png" style="width:100%">
+                <div class="hero-text">
+                    <h1 style="font-size:40px">
+                        Contact Us
+                    </h1>
+                </div>
+            </div>
+    </section>
+    <section>
+        <div class="map-container">
+            <div class="map">
+                <div style="width: 100%"><iframe width="100%" height="660" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=226,%20Opp.%20DDA%20Flat,%20Badarpur,%20New%20Delhi,%20Haryana%20110044+(madhu%20enterprises%20)&amp;t=&amp;z=11&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/marine-gps/">navigation gps</a></iframe></div>
+            </div>
+        </div>
+
+
+        </div>
+
+
+
+    </section>
+    <section>
+
+        <div class="contact-us-container">
+            <div class="contactUs">
+                <div class="underline"><span></span></div>
+                <h5>Quick Contact</h5>
+                <form action="contact_us.php" method="post" enctype="multipart/form-data">
+
+                    <input type="text" id="fname" name="Name" placeholder="Your name..">
+
+
+                    <input type="text" id="lname" name="company_name" placeholder="Company name..">
+
+
+                    <input type="text" id="country" name="phone" placeholder="Phone number..">
+
+
+                    <textarea id="subject" name="message" placeholder="Write something.." style="height:140px"></textarea>
+                    <br>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+
+
+
+    </section>
+    <section>
+        <div class="side-container">
+            <div class="last-container">
+                <div class="last-details-left">
+                    <h3>Contact Us</h3>
+                    <h2>sufiyan ENTERPRISES</h2>
+                    <p>H.N.A 75 GF, Near Thokar no.6,</p>
+
+                    <p>Opp-dda Flats, Shaheen Bagh</p>
+
+                    <p>Delhi - 110025</p>
+                    <p>INDIA</p>
+
+                </div>
+                <div class="last-details-right">
+                    <p class="para1">Contact: Sufiyan Ahmad Khan</p>
+                    <p> <b>Phone:</b> 8010982345</p>
+                    <p> <b>E-Mail –</b> me.sufiyan.v@gmail.com
+                    </p>
+                    <p><b>Website –</b> www.sufiyan ENTERPRISES.com</p>
+
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <section>
+        <div class="un">
+            <div class="under-line"></div>
+            <div class="under-line1"></div>
+        </div>
+
+    </section>
+    <footer class="footer-distributed ">
+
+        <div class="footer-left ">
+            <a href="index.html"><img src="https://www.marx-engels.de/images/images_layout/ME_logo_final.png "></a>
+
+            <h3>About<span>sufiyan ENTERPRISES</span></h3>
+
+            <p class="footer-links ">
+                <a href="index.html">Home</a> |
+                <a href="gallery.html">Gallery</a> |
+                <a href="AboutUs.html">About</a> |
+                <a href="contact-us.html">Contact</a>
+            </p>
+
+            <p class="footer-company-name ">Copyright © 2022,sufiyan ENTERPRISES - All Rights Reserved.</p>
+        </div>
+
+        <div class="footer-center ">
+            <div>
+                <i class="fa fa-map-marker "></i>
+                <p><span>H.N.A 75 , Near Thokar no.6, Opp-dda Flats </span> Shaheen Bagh Delhi - 110025</p>
+            </div>
+
+            <div>
+                <a href="tel:8010982345"><i class="fa fa-phone ">
+
+                </i></a>
+
+                <p>+91 8010982345</p>
+            </div>
+            <div>
+                <i class="fa fa-envelope "></i>
+                <p><a href="mailto:support@eduonix.com ">support@kas7860@gmail.com</a></p>
+            </div>
+        </div>
+        <div class="footer-right ">
+            <p class="footer-company-about ">
+                <span>About the company</span> we are offering optimum quality Cleaning Services, Renovation Services, Housekeeping Services, Facility Management Services, Security Manpower Services, Security Guard Services and Office Support Services
+                for our valued customers.</p>
+            <div class="footer-icons ">
+                <a href="https://www.facebook.com" target=_blank><i class=" fa fa-facebook " ></i></a>
+                <a href="https://www.twitter.com " target=_blank><i class="fa fa-twitter "></i></a>
+                <a href="https://www.instagram.com" target=_blank><i class=" fa fa-instagram "></i></a>
+
+                <a href="https://www.youtube.com " target=_blank><i class="fa fa-youtube "></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

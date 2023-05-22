@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Hire</title>
+    <link rel="icon" href="file:///C:/Users/kas78/Downloads/SE%20LOGO.webp" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    html,
+    body {
+        height: 100%;
+    }
+    
+    nav {
+        display: flex;
+        height: 80px;
+        width: 100%;
+        background: #1b1b1b;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 50px 0 100px;
+        flex-wrap: wrap;
+        position: fixed;
+        overflow: hidden;
+        top: 0;
+        z-index: 1;
+    }
+    
+    .logo img {
+        /* color: #fff;
+        font-size: 35px;
+        font-weight: 600; */
+        width: 75px;
+        height: 50px;
+        opacity: 100%;
+        /* position: fixed; */
+        top: 1rem;
+        left: 8rem;
+    }
+    
+    nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+    }
+    
+    nav ul li {
+        margin: 0 5px;
+    }
+    
+    nav ul li a {
+        color: #f2f2f2;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 500;
+        padding: 8px 15px;
+        border-radius: 5px;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+    }
+    
+    nav ul li a.active,
+    nav ul li a:hover {
+        color: #111;
+        background: #fff;
+    }
+    
+    nav .menu-btn i {
+        color: #fff;
+        font-size: 22px;
+        cursor: pointer;
+        display: none;
+    }
+    
+    input[type="checkbox"] {
+        display: none;
+    }
+    
+    @media (max-width: 1000px) {
+        nav {
+            padding: 0 40px 0 50px;
+        }
+    }
+    
+    @media (max-width: 920px) {
+        nav .menu-btn i {
+            display: block;
+        }
+        #click:checked~.menu-btn i:before {
+            content: "\f00d";
+        }
+        nav ul {
+            position: fixed;
+            top: 80px;
+            left: -100%;
+            background: #111;
+            height: 100vh;
+            width: 100%;
+            text-align: center;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        #click:checked~ul {
+            left: 0;
+        }
+        nav ul li {
+            width: 100%;
+            margin: 40px 0;
+        }
+        nav ul li a {
+            width: 100%;
+            margin-left: -100%;
+            display: block;
+            font-size: 20px;
+            transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        #click:checked~ul li a {
+            margin-left: 0px;
+        }
+        nav ul li a.active,
+        nav ul li a:hover {
+            background: none;
+            color: cyan;
+        }
+    }
+    
+    .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        z-index: -1;
+        width: 100%;
+        padding: 0 30px;
+        color: #1b1b1b;
+    }
+    
+    .content div {
+        font-size: 40px;
+        font-weight: 700;
+    }
+    
+    .firstimage-container {
+        background-color: rgba(66, 129, 245, 0.514);
+    }
+    
+    .firstimage img {
+        width: 90rem;
+        /* align-items: center; */
+        margin-top: 5rem;
+        margin-left: 8rem;
+    }
+    
+    .firstimage button {
+        border: none;
+        color: rgb(170, 0, 255);
+        background-color: transparent;
+        font-size: 1.5rem;
+        border-right: .05em solid;
+        animation: caret 1s steps(1) infinite;
+        cursor: pointer;
+        margin-left: 54rem;
+        margin-bottom: 24rem;
+    }
+    
+    @keyframes caret {
+        50% {
+            border-color: transparent;
+        }
+    }
+    
+    .Hireus-container {
+        /* background-color: rgba(0, 0, 0, 0.9); */
+        background-color: rgb(255, 255, 255);
+        width: 80%;
+        height: 105rem;
+        margin-left: 12rem;
+        /* position: absolute; */
+        margin-top: -15rem;
+        top: 40rem;
+        border-radius: 1.5rem;
+        overflow: hidden;
+        /* border-style: groove; */
+        box-shadow: 1px 1px 5px #555 inset;
+    }
+    
+    .hire-us {
+        margin-top: 5rem;
+        margin-left: 22rem;
+    }
+    
+    #company-data {
+        font-size: 1.2rem;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    #our-service {
+        font-size: 1.2rem;
+        height: 3rem;
+        width: 45rem;
+        border: 1px solid #ccc;
+    }
+    
+    input[type=text],
+    input[type=email],
+    textarea {
+        font-size: 1.5rem;
+        height: 2.2rem;
+        width: 45rem;
+        padding: 25px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-bottom: 16px;
+        /* margin-left: 3rem; */
+    }
+    
+    input:focus {
+        outline: none;
+        border: 1px solid forestgreen;
+    }
+    
+    input[ type=radio] {
+        padding: 25px;
+        box-sizing: border-box;
+        margin-top: 25px;
+        margin-bottom: 16px;
+        margin-left: 4rem;
+        /* display: flexbox; */
+        width: 2rem;
+        height: 1.5rem;
+    }
+    
+    input[ type=date] {
+        padding: 25px;
+        box-sizing: border-box;
+        margin-top: 16px;
+        margin-bottom: 16px;
+        font-size: 1.3rem;
+        height: 2.2rem;
+        width: 45rem;
+        border: 1px solid #ccc;
+    }
+    
+    .button {
+        width: 120px;
+        height: 35px;
+        margin-left: 10rem;
+        border-radius: 5px;
+        background-color: forestgreen;
+        color: #fff;
+        border: none;
+        padding: 7px
+    }
+    
+    .button:hover {
+        cursor: pointer;
+        background-color: #1ce01c;
+    }
+    
+    @media (max-height:800px) {
+        header {
+            padding-top: 40px;
+        }
+    }
+    
+    footer {
+        /* position: fixed; */
+        bottom: 0;
+    }
+    
+    @media (max-height:800px) {
+        footer {
+            position: static;
+        }
+        header {
+            padding-top: 40px;
+        }
+    }
+    
+    .footer-distributed {
+        background-color: #2c292f;
+        box-sizing: border-box;
+        width: 100%;
+        text-align: left;
+        font: bold 16px sans-serif;
+        padding: 50px 50px 60px 50px;
+        margin-top: 80px;
+    }
+    
+    .footer-distributed .footer-left,
+    .footer-distributed .footer-center,
+    .footer-distributed .footer-right {
+        display: inline-block;
+        vertical-align: top;
+    }
+    /* Footer left */
+    
+    .footer-distributed .footer-left {
+        width: 30%;
+    }
+    
+    .footer-distributed h3 {
+        color: #ffffff;
+        font: normal 36px 'Cookie', cursive;
+        margin: 0;
+    }
+    /* The company logo */
+    
+    .footer-distributed .footer-left img {
+        width: 10%;
+    }
+    
+    .footer-distributed h3 span {
+        color: #e0ac1c;
+    }
+    /* Footer links */
+    
+    .footer-distributed .footer-links {
+        color: #ffffff;
+        margin: 20px 0 12px;
+    }
+    
+    .footer-distributed .footer-links a {
+        display: inline-block;
+        line-height: 1.8;
+        text-decoration: none;
+        color: inherit;
+    }
+    
+    .footer-distributed .footer-company-name {
+        color: #8f9296;
+        font-size: 14px;
+        font-weight: normal;
+        margin: 0;
+    }
+    /* Footer Center */
+    
+    .footer-distributed .footer-center {
+        width: 35%;
+    }
+    
+    .footer-distributed .footer-center i {
+        background-color: #33383b;
+        color: #ffffff;
+        font-size: 25px;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 42px;
+        margin: 10px 15px;
+        vertical-align: middle;
+    }
+    
+    .footer-distributed .footer-center i.fa-envelope {
+        font-size: 17px;
+        line-height: 38px;
+    }
+    
+    .footer-distributed .footer-center p {
+        display: inline-block;
+        color: #ffffff;
+        vertical-align: middle;
+        margin: 0;
+    }
+    
+    .footer-distributed .footer-center p span {
+        display: block;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 2;
+    }
+    
+    .footer-distributed .footer-center p a {
+        color: #e0ac1c;
+        text-decoration: none;
+        ;
+    }
+    /* Footer Right */
+    
+    .footer-distributed .footer-right {
+        width: 30%;
+    }
+    
+    .footer-distributed .footer-company-about {
+        line-height: 20px;
+        color: #92999f;
+        font-size: 13px;
+        font-weight: normal;
+        margin: 0;
+    }
+    
+    .footer-distributed .footer-company-about span {
+        display: block;
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    
+    .footer-distributed .footer-icons {
+        margin-top: 25px;
+    }
+    
+    .footer-distributed .footer-icons a {
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+        background-color: #33383b;
+        border-radius: 2px;
+        font-size: 20px;
+        color: #ffffff;
+        text-align: center;
+        line-height: 35px;
+        margin-right: 3px;
+        margin-bottom: 5px;
+    }
+    /* Here is the code for Responsive Footer */
+    /* You can remove below code if you don't want Footer to be responsive */
+    
+    @media (max-width: 880px) {
+        .footer-distributed .footer-left,
+        .footer-distributed .footer-center,
+        .footer-distributed .footer-right {
+            display: block;
+            width: 100%;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .footer-distributed .footer-center i {
+            margin-left: 0;
+        }
+    }
+    
+     ::-webkit-scrollbar {
+        width: 5px;
+    }
+    
+     ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    
+     ::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+    
+     ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+    
+    .tooltiptext {
+        position: relative;
+        display: inline-block;
+        visibility: hidden;
+        background-color: transparent;
+        color: rgba(250, 0, 0, 0.384);
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        /* Position the tooltip */
+        position: absolute;
+        z-index: 1;
+        margin-left: -44rem;
+        margin-top: 3.2rem;
+        font-size: 0.8rem;
+    }
+    
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+    }
+</style>
+
+<body>
+    <nav>
+        <div class="logo">
+            <a href="index.html"><img src="images/ME_logo_final.png" alt="logo"> </div>
+        </a>
+
+        <input type="checkbox" id="click">
+        <label for="click" class="menu-btn">
+        <i class="fas fa-bars"></i>
+      </label>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="AboutUs.html">About Us</a></li>
+            <li><a href="Services.html">Services</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact-us.html">Contact Us</a></li>
+        </ul>
+    </nav>
+    <section>
+        <div class="firstimage-container">
+            <div class="firstimage">
+                <img src="contact_us.php" alt="hire us">
+                <!-- <h1>Sufiyan<span style="color:red;">ENTERPRISES</span> </h1>
+                <h2>We Provides services like</h2> -->
+                <button onClick="window.location.href='ourservices.html' ;"><a class="typewrite" data-period="2000" data-type='[ "Manpower Supply", "Industrial Housekeeping", "Contract Labour", "Back office operation" ]'>
+                        <span class="wrap"></span>
+                    </a></button>
+
+
+            </div>
+
+
+    </section>
+
+
+    <section>
+        <div class="Hireus-container">
+            <div class="hire-us">
+                <form action="connect-hire.php" method="post" enctype="multipart/form-data">
+                    <div id="company-data">
+                        <div>
+                            <h3>Hire Us</h3>
+                            <br>
+                            <p>Application for Service <span style="color: red;">*</span></p>
+
+                            <select name="service_needed" id="our-service">
+                                <option value="" selected>--Please choose an option--</option>
+                                <option value="Housekeeping">Housekeeping</option>
+                                <option value="security gaurds">security gaurds</option>
+                                <option value="back office operation">back office operation</option>
+                                <option value="cleaning works">cleaning works</option>
+                              </select>
+                        </div>
+                        <br>
+                        <div>
+                            <p>Number of Staff required:<span style="color: red;">*</span></p>
+                            <input type="text" placeholder="no. of staff" size="25" name="staff_required">
+                        </div>
+                        <div>
+                            <p>Date to start: <span style="color: red;">*</span></p>
+
+                            <input type="date" name="start_date">
+
+                        </div>
+
+                        <br>
+                        <h3>Company details</h3>
+                        <br>
+                        <div>
+                            <p>Company Name <span style="color: red;">*</span></p>
+                            <input type="text" placeholder="Company Name" size="25" name="company_name">
+                        </div>
+
+                        <br>
+                        <div>
+                            <p>Company Type</p>
+                            <input type="text" placeholder="IT , Construction, Education" size="25" name="companyType">
+                            <tr>
+                        </div>
+
+                        <br>
+                        <p>Class of Company<span style="color: red;">*</span></p>
+                        <tr>
+                            <td>
+                                <input type="radio" name="category" value="private">Private
+                                <input type="radio" name="category" value="government">Government
+                            </td>
+                        </tr>
+                        <br><br>
+                        <h3>Contact Details</h3>
+                        <br>
+                        <div class="tooltip">
+                            <p>Mobile Number <span style="color: red;">*</span></p>
+                            <input type="text" placeholder="Enter 10 digit mobile number" pattern="[1-9]{1}[0-9]{9}" size="25" name="phone" required><span class="tooltiptext">Please don't use country code or 0 before Mobile no.</span>
+                        </div>
+                        <br>
+                        <div class="tooltip">
+                            <p>Email Id<span style="color: red;">*</span></p>
+                            <input type="email" placeholder="your id@gmail.com" size="25" name="email"><span class="tooltiptext">please verify your email address</span>
+                        </div>
+                        <br>
+
+                        <h3>Address Details<span style="color: red;">*</span></h3>
+                        <br>
+                        <div>
+                            <p>Address:</p>
+                            <input type="text" size="25" name="address">
+                        </div>
+                        <div>
+                            <p>State</p>
+                            <input type="text" size="25" name="state">
+                        </div>
+
+                        <br>
+                        <div>
+                            <p>City</p>
+                            <input type="text" size="25" name="city">
+                        </div>
+
+
+
+                        <br>
+                        <div>
+                            <p>Pin Code</p>
+                            <input type="text" size="25" name="pin_code">
+                        </div>
+                        <br>
+                    </div>
+                    <div>
+
+                        <input type="Submit" value="Submit" class="button">
+
+                        <input type="Reset" value="Reset" class="button">
+
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <footer class="footer-distributed ">
+
+        <div class="footer-left ">
+            <a href="index.html"><img src="https://www.marx-engels.de/images/images_layout/ME_logo_final.png "></a>
+
+            <h3>About<span>sufiyan ENTERPRISES</span></h3>
+
+            <p class="footer-links ">
+                <a href="index.html">Home</a> |
+                <a href="gallery.html">Gallery</a> |
+                <a href="AboutUs.html">About</a> |
+                <a href="contact-us.html">Contact</a>
+            </p>
+
+            <p class="footer-company-name ">Copyright © 2022, sufiyan ENTERPRISES - All Rights Reserved.</p>
+        </div>
+
+        <div class="footer-center ">
+            <div>
+                <i class="fa fa-map-marker "></i>
+                <p><span>H.N.A 75 GF, Near Thokar no.6 , Opp-dda Flats </span>Shaheen Bagh Delhi - 110025</p>
+            </div>
+
+            <div>
+                <a href="tel:8010982345 "><i class="fa fa-phone ">
+
+                </i></a>
+
+                <p>+91 8010982345</p>
+            </div>
+            <div>
+                <i class="fa fa-envelope "></i>
+                <p><a href="mailto:support@eduonix.com ">support@kas7860.com</a></p>
+            </div>
+        </div>
+        <div class="footer-right ">
+            <p class="footer-company-about ">
+                <span>About the company</span> we are offering optimum quality Cleaning Services, Renovation Services, Housekeeping Services, Facility Management Services, Security Manpower Services, Security Guard Services and Office Support Services
+                for our valued customers.</p>
+            <div class="footer-icons ">
+                <a href="https://www.facebook.com" target=_blank><i class=" fa fa-facebook " ></i></a>
+                <a href="https://www.twitter.com " target=_blank><i class="fa fa-twitter "></i></a>
+                <a href="https://www.instagram.com" target=_blank><i class=" fa fa-instagram "></i></a>
+
+                <a href="https://www.youtube.com " target=_blank><i class="fa fa-youtube "></i></a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        var TxtType = function(el, toRotate, period) {
+            this.toRotate = toRotate;
+            this.el = el;
+            this.loopNum = 0;
+            this.period = parseInt(period, 10) || 2000;
+            this.txt = '';
+            this.tick();
+            this.isDeleting = false;
+        };
+
+        TxtType.prototype.tick = function() {
+            var i = this.loopNum % this.toRotate.length;
+            var fullTxt = this.toRotate[i];
+
+            if (this.isDeleting) {
+                this.txt = fullTxt.substring(0, this.txt.length - 1);
+            } else {
+                this.txt = fullTxt.substring(0, this.txt.length + 1);
+            }
+
+            this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+
+            var that = this;
+            var delta = 200 - Math.random() * 100;
+
+            if (this.isDeleting) {
+                delta /= 2;
+            }
+
+            if (!this.isDeleting && this.txt === fullTxt) {
+                delta = this.period;
+                this.isDeleting = true;
+            } else if (this.isDeleting && this.txt === '') {
+                this.isDeleting = false;
+                this.loopNum++;
+                delta = 500;
+            }
+
+            setTimeout(function() {
+                that.tick();
+            }, delta);
+        };
+
+        window.onload = function() {
+            var elements = document.getElementsByClassName('typewrite');
+            for (var i = 0; i < elements.length; i++) {
+                var toRotate = elements[i].getAttribute('data-type');
+                var period = elements[i].getAttribute('data-period');
+                if (toRotate) {
+                    new TxtType(elements[i], JSON.parse(toRotate), period);
+                }
+            }
+            // INJECT CSS
+            var css = document.createElement("style");
+            css.type = "text/css";
+            css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+            document.body.appendChild(css);
+        };
+    </script>
+</body>
+
+
+</html>

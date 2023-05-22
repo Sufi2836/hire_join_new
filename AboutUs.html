@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>AboutUs</title>
+    <link rel="icon" href="https://www.marx-engels.de/images/images_layout/ME_logo_final.png" type="image/x-icon">
+    <link rel="stylesheet" href="AboutUs.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    nav {
+        display: flex;
+        height: 80px;
+        width: 100%;
+        background: #1b1b1b;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 50px 0 100px;
+        flex-wrap: wrap;
+        position: fixed;
+        overflow: hidden;
+        top: 0;
+        z-index: 1;
+    }
+    
+    .logo img {
+        /* color: #fff;
+        font-size: 35px;
+        font-weight: 600; */
+        width: 75px;
+        height: 50px;
+        opacity: 100%;
+        /* position: fixed; */
+        top: 1rem;
+        left: 8rem;
+    }
+    
+    nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+    }
+    
+    nav ul li {
+        margin: 0 5px;
+    }
+    
+    nav ul li a {
+        color: #f2f2f2;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 500;
+        padding: 8px 15px;
+        border-radius: 5px;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+    }
+    
+    nav ul li a.active,
+    nav ul li a:hover {
+        color: #111;
+        background: #fff;
+    }
+    
+    nav .menu-btn i {
+        color: #fff;
+        font-size: 22px;
+        cursor: pointer;
+        display: none;
+    }
+    
+    input[type="checkbox"] {
+        display: none;
+    }
+    
+    @media (max-width: 1000px) {
+        nav {
+            padding: 0 40px 0 50px;
+        }
+    }
+    
+    @media (max-width: 920px) {
+        nav .menu-btn i {
+            display: block;
+        }
+        #click:checked~.menu-btn i:before {
+            content: "\f00d";
+        }
+        nav ul {
+            position: fixed;
+            top: 80px;
+            left: -100%;
+            background: #111;
+            height: 100vh;
+            width: 100%;
+            text-align: center;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        #click:checked~ul {
+            left: 0;
+        }
+        nav ul li {
+            width: 100%;
+            margin: 40px 0;
+        }
+        nav ul li a {
+            width: 100%;
+            margin-left: -100%;
+            display: block;
+            font-size: 20px;
+            transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        #click:checked~ul li a {
+            margin-left: 0px;
+        }
+        nav ul li a.active,
+        nav ul li a:hover {
+            background: none;
+            color: cyan;
+        }
+    }
+    
+    .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        z-index: -1;
+        width: 100%;
+        padding: 0 30px;
+        color: #1b1b1b;
+    }
+    
+    .content div {
+        font-size: 40px;
+        font-weight: 700;
+    }
+    
+    * {
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: Verdana, sans-serif;
+    }
+    
+    .mySlides {
+        display: none;
+    }
+    
+    img {
+        vertical-align: middle;
+    }
+    /* Slideshow container */
+    
+    .slideshow-container {
+        max-width: 1800px;
+        position: relative;
+        margin: auto;
+        top: 5rem;
+    }
+    /* Caption text */
+    
+    .text {
+        color: #f2f2f2;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+    }
+    /* Number text (1/3 etc) */
+    
+    .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+    }
+    /* The dots/bullets/indicators */
+    
+    .dot {
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+    
+    .active {
+        background-color: #717171;
+    }
+    /* Fading animation */
+    
+    .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+    }
+    
+    @keyframes fade {
+        from {
+            opacity: .4
+        }
+        to {
+            opacity: 1
+        }
+    }
+    /* On smaller screens, decrease text size */
+    
+    @media only screen and (max-width: 300px) {
+        .text {
+            font-size: 11px
+        }
+    }
+    
+    .about-us {
+        width: 100%;
+        background-color: #f5f5f5;
+        padding-bottom: 15rem;
+    }
+    
+    .section-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 7rem 0 10rem 0;
+    }
+    
+    .section-heading {
+        font-family: "Muli", serif;
+        font-size: 5rem;
+        font-weight: 300;
+        color: #4b4b4b;
+        margin-bottom: 6rem;
+    }
+    
+    .underline {
+        width: 12rem;
+        height: 0.3rem;
+        background-color: #c29525;
+    }
+    
+    .service-header {
+        display: flex;
+        left: 10px;
+        align-items: center;
+        margin-left: 30rem;
+    }
+    
+    .service-header h2 {
+        font-family: "Baloo Da 2", serif;
+        font-size: 4rem;
+        line-height: 2.6rem;
+        font-weight: 400;
+        margin-bottom: 2rem;
+    }
+    
+    .service-text {
+        font-family: "Josefin Slab", serif;
+        font-size: 2.5rem;
+        text-align: justify;
+        margin-left: 30rem;
+        margin-right: 40rem;
+        line-height: 4rem;
+    }
+    
+    .service-Table {
+        display: flex;
+        left: 10px;
+        align-items: center;
+        margin-left: 30rem;
+    }
+    
+    .service-Table p {
+        font-family: "Baloo Da 2", serif;
+        font-size: 3rem;
+        line-height: 2.6rem;
+        font-weight: 400;
+        margin-top: 10px;
+        margin-bottom: 2rem;
+    }
+    
+    .table1 table,
+    th,
+    td {
+        border: 1px solid #808080;
+        border-collapse: collapse;
+        margin-left: 30%;
+        font-size: 2rem;
+    }
+    
+    .infra-header {
+        display: flex;
+        left: 10px;
+        align-items: center;
+        margin-left: 30rem;
+    }
+    
+    .infra-header h2 {
+        font-family: "Baloo Da 2", serif;
+        font-size: 4rem;
+        line-height: 2.6rem;
+        font-weight: 400;
+        margin-bottom: 2rem;
+        margin-top: 5rem;
+    }
+    
+    .infra-text {
+        font-family: "Josefin Slab", serif;
+        font-size: 2.5rem;
+        text-align: justify;
+        margin-left: 30rem;
+        margin-right: 40rem;
+        line-height: 4rem;
+    }
+    
+    .record-header {
+        display: flex;
+        left: 10px;
+        align-items: center;
+        margin-left: 30rem;
+    }
+    
+    .record-header h2 {
+        font-family: "Baloo Da 2", serif;
+        font-size: 4rem;
+        line-height: 2.6rem;
+        font-weight: 400;
+        margin-bottom: 2rem;
+        margin-top: 5rem;
+    }
+    
+    .record-text {
+        font-family: "Josefin Slab", serif;
+        font-size: 2.5rem;
+        text-align: justify;
+        margin-left: 30rem;
+        margin-right: 40rem;
+        line-height: 4rem;
+    }
+    
+    .information-table table {
+        margin-left: 30rem;
+        border-collapse: collapse;
+        /* border-top: 1px solid #DDD;
+        border-left: 1px solid #DDD;
+        border-right: 1px solid #DDD;
+        border-bottom: 1px solid #DDD; */
+    }
+    
+    .information-table th,
+    td {
+        border-width: 0;
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #DDD;
+    }
+    
+    .information-table tr:hover {
+        background-color: #D6EEEE;
+    }
+    
+    .key {
+        margin-left: 30rem;
+    }
+    
+    .key-header h3 {
+        font-family: "Baloo Da 2", serif;
+        font-size: 3rem;
+        line-height: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .key-bullets ul {
+        font-size: 2rem;
+        text-align: justify;
+        margin-left: 30rem;
+        margin-right: 40rem;
+        line-height: 4rem;
+    }
+    
+    .key-bullets li {
+        font-size: 1.7rem;
+        margin-left: 10px;
+        list-style-type: initial;
+    }
+    
+    .satisfaction {
+        margin-left: 30rem;
+    }
+    
+    .satisfaction h3 {
+        font-family: "Baloo Da 2", serif;
+        font-size: 2.5rem;
+        line-height: 2.6rem;
+        margin-bottom: 1rem;
+        margin-top: 2rem;
+    }
+    
+    .satisfaction-text {
+        font-family: "Josefin Slab", serif;
+        font-size: 2rem;
+        text-align: justify;
+        margin-right: 40rem;
+        line-height: 4rem;
+    }
+    
+    footer {
+        /* position: fixed; */
+        bottom: 0;
+    }
+    
+    @media (max-height:800px) {
+        footer {
+            position: static;
+        }
+        header {
+            padding-top: 40px;
+        }
+    }
+    
+    .footer-distributed {
+        background-color: #2c292f;
+        box-sizing: border-box;
+        width: 100%;
+        text-align: left;
+        font: bold 16px sans-serif;
+        padding: 50px 50px 60px 50px;
+        margin-top: 80px;
+    }
+    
+    .footer-distributed .footer-left,
+    .footer-distributed .footer-center,
+    .footer-distributed .footer-right {
+        display: inline-block;
+        vertical-align: top;
+    }
+    /* Footer left */
+    
+    .footer-distributed .footer-left {
+        width: 30%;
+    }
+    
+    .footer-distributed h3 {
+        color: #ffffff;
+        font: normal 36px 'Cookie', cursive;
+        margin: 0;
+    }
+    /* The company logo */
+    
+    .footer-distributed .footer-left img {
+        width: 10%;
+    }
+    
+    .footer-distributed h3 span {
+        color: #e0ac1c;
+    }
+    /* Footer links */
+    
+    .footer-distributed .footer-links {
+        color: #ffffff;
+        margin: 20px 0 12px;
+    }
+    
+    .footer-distributed .footer-links a {
+        display: inline-block;
+        line-height: 1.8;
+        text-decoration: none;
+        color: inherit;
+    }
+    
+    .footer-distributed .footer-company-name {
+        color: #8f9296;
+        font-size: 14px;
+        font-weight: normal;
+        margin: 0;
+    }
+    /* Footer Center */
+    
+    .footer-distributed .footer-center {
+        width: 35%;
+    }
+    
+    .footer-distributed .footer-center i {
+        background-color: #33383b;
+        color: #ffffff;
+        font-size: 25px;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 42px;
+        margin: 10px 15px;
+        vertical-align: middle;
+    }
+    
+    .footer-distributed .footer-center i.fa-envelope {
+        font-size: 17px;
+        line-height: 38px;
+    }
+    
+    .footer-distributed .footer-center p {
+        display: inline-block;
+        color: #ffffff;
+        vertical-align: middle;
+        margin: 0;
+    }
+    
+    .footer-distributed .footer-center p span {
+        display: block;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 2;
+    }
+    
+    .footer-distributed .footer-center p a {
+        color: #e0ac1c;
+        text-decoration: none;
+        ;
+    }
+    /* Footer Right */
+    
+    .footer-distributed .footer-right {
+        width: 30%;
+    }
+    
+    .footer-distributed .footer-company-about {
+        line-height: 20px;
+        color: #92999f;
+        font-size: 13px;
+        font-weight: normal;
+        margin: 0;
+    }
+    
+    .footer-distributed .footer-company-about span {
+        display: block;
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    
+    .footer-distributed .footer-icons {
+        margin-top: 25px;
+    }
+    
+    .footer-distributed .footer-icons a {
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+        background-color: #33383b;
+        border-radius: 2px;
+        font-size: 20px;
+        color: #ffffff;
+        text-align: center;
+        line-height: 35px;
+        margin-right: 3px;
+        margin-bottom: 5px;
+    }
+    /* Here is the code for Responsive Footer */
+    /* You can remove below code if you don't want Footer to be responsive */
+    
+    @media (max-width: 880px) {
+        .footer-distributed .footer-left,
+        .footer-distributed .footer-center,
+        .footer-distributed .footer-right {
+            display: block;
+            width: 100%;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .footer-distributed .footer-center i {
+            margin-left: 0;
+        }
+    }
+    
+    .scroll-btn {
+        position: fixed;
+        right: 5rem;
+        bottom: 5rem;
+        width: 4.5rem;
+        height: 4.5rem;
+        background-color: #e2b646;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        color: #fff;
+        box-shadow: 0 0.1rem 0.6rem rgba(0, 0, 0, 0.2);
+        border-radius: 0.3rem;
+    }
+    
+     ::-webkit-scrollbar {
+        width: 5px;
+    }
+    
+     ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    
+     ::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+    
+     ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+</style>
+
+<body>
+    <nav>
+        <div class="logo">
+            <a href="index.html"><img src="https://www.marx-engels.de/images/images_layout/ME_logo_final.png" alt="logo"> </a>
+        </div>
+        <input type="checkbox" id="click">
+        <label for="click" class="menu-btn">
+        <i class="fas fa-bars"></i>
+      </label>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a class="active" href="#">About Us</a></li>
+            <li><a href="ourservices.html">Services</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact-us.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <section>
+        <div class="slideshow-container">
+
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 3</div>
+                <img src="images/card.jpg" style="width:100%">
+                <div class="text">Caption Text</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 3</div>
+                <img src="images/card3.jpg" style="width:100%">
+                <div class="text">Caption Two</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 3</div>
+                <img src="images/slide.jpg" style="width:100%">
+                <div class="text">Caption Three</div>
+            </div>
+
+        </div>
+        <br>
+
+        <div style="text-align:center">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </section>
+    <section>
+        <div class="section-header">
+            <h1 class="section-heading">About Us</h1>
+            <div class="underline"></div>
+        </div>
+
+
+        <div class="service">
+            <div class="service-header">
+                <h2><b>Who we are</b></h2>
+            </div>
+            <p class="service-text">
+                <b>Established in the year 2005 sufiyan ENTERPRISES is a team characterized by high professional ethics & efficient services for its clients.</b><br><br> We have scaled great height in terms of our in size & stature in a short period of
+                time. we have developed our core competence in offering manpower services. Based on the rudimentary understanding of the market needs, we offer quality services at competitive prices to our clients.
+                <br><br>We owe our success to our commitment to excellence by overhauling our processes and enhancing our core competencies. The professional attitude of our experts has led to several liaisons with noted companies, which has accelerated
+                our companies growth.
+                <br><br>
+            </p>
+
+            <div class="service-header">
+                <h2><b>What we do</b></h2>
+            </div>
+            <p class="service-text">
+                We are among the best Manpower suppliers in North India and other parts of India providing total manpower solutions to our client including fortune 500 companies.
+            </p>
+        </div>
+
+
+    </section>
+
+    <section>
+        <div class="service-Table">
+            <p>We are dealing in following:</p>
+        </div>
+
+    </section>
+    <section>
+        <div class="table1">
+            <table style="width:50%">
+                <tr style="height:55px">
+                    <td><b>Manpower Supply</b></td>
+                    <td>Skilled: - Experience Operators for all machines.</td>
+
+                </tr>
+                <tr style="height:55px">
+                    <td></td>
+                    <td> Semi-Skilled: – Fresh ITI & Experience Helper</td>
+
+                </tr>
+                <tr style="height:55px">
+                    <td></td>
+                    <td>Unskilled: – Loading. Unloading, Shifting, Packing etc.</td>
+
+                </tr>
+                <tr style="height:55px">
+                    <td><b>Industrial Housekeeping</b></td>
+                    <td>Manpower to Industries</td>
+
+                </tr>
+                <tr style="height:55px">
+                    <td></td>
+                    <td> With Machines Manpower to Industries</td>
+
+                </tr>
+                <tr style="height:55px">
+                    <td><b>Contract Labour</b></td>
+                    <td> We also take over the entire manpower or contract labor</td>
+
+                </tr>
+            </table>
+
+
+        </div>
+
+    </section>
+
+
+    <section>
+        <div class="infra">
+            <div class="infra-header">
+                <h2><b>Our Infrastructure</b></h2>
+            </div>
+            <p class="infra-text">
+                We are a professionally managed company having a huge pool of professionals with a competent and trusted workforce. they are inducted after verification of credentials, proof of residence, last employment record, group behavior etc.<br><br>they
+                undergo rigorous training in related fields which imparts the necessary knowledge and skills to perform their duties with excellence.
+                <br><br>Our works manager give on the job training, monitor performance and motivates the deputed personnel to perform as required or alternatively suggest a chance.
+                <br><br>
+            </p>
+        </div>
+    </section>
+    <section>
+        <div class="record">
+            <div class="record-header">
+                <h2><b>Record Keeping</b></h2>
+            </div>
+            <p class="record-text">
+                We at sufiyan ENETERPRISES  are working professionally and efficiently regarding record keeping of all companies.<br>All the records under the Labour Act. EPFO Act. & ESIC Act. Etc. is maintained properly & timely.
+                <br><br>
+            </p>
+        </div>
+    </section>
+
+    <section>
+        <div class="information-table">
+            <table style="width:50%">
+                <tr style="border-bottom: 15px solid #c29525">
+                    <th>Fact sheet</th>
+                    <th></th>
+
+                </tr>
+                <tr style="border-bottom: 2px solid #c29525">
+                    <th>Basic information</th>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    <td>Nature of Business</td>
+                    <td>Service Provider</td>
+
+                </tr>
+                <tr>
+                    <td>Company CEO</td>
+                    <td>Sufiyan</td>
+
+                </tr>
+                <tr>
+                    <td>Total Number of Employees</td>
+                    <td>26 to 50 People</td>
+
+                </tr>
+                <tr>
+                    <td>Year of Establishment</td>
+                    <td>2005</td>
+
+                </tr>
+                <tr>
+                    <td>Legal Status of Firm</td>
+                    <td>Partnership Firm</td>
+
+                </tr>
+                <tr style="border-bottom: 1.5px solid #c29525 ">
+                    <td>Annual Turnover</td>
+                    <td>Upto Rs. 50 Lakh</td>
+
+                </tr>
+                <tr style="border-bottom: 2px solid #c29525 ">
+                    <th>Statutory Profile</th>
+                    <td></td>
+
+                </tr>
+                <tr>
+                    <td>Banker</td>
+                    <td>ORIENTAL BANK OF COMMERCE</td>
+
+                </tr>
+                <tr style="border-bottom: 2.5px solid #c29525 ">
+                    <td>GST No.</td>
+                    <td>07AATFM4447Q1ZB</td>
+
+                </tr>
+                <tr style="border-bottom: 2px solid #c29525">
+                    <th>Packaging/Payment and Shipment Details</th>
+                    <td></td>
+
+                </tr>
+
+                <tr style="border-bottom: 15px solid #c29525">
+                    <td>Payment Mode</td>
+                    <td>Cash<br>Credit Card<br>Cheque<br> DD
+                    </td>
+
+                </tr>
+            </table>
+
+        </div>
+    </section>
+    <section>
+        <div class="record">
+            <div class="record-header">
+                <h2><b>Why us?</b></h2>
+            </div>
+            <p class="record-text">
+                We have emerged as a prominent organization engaged in offering a wide array of renovation and cleaning services. Owing to our strong association with some of the huge client bases, we are able to render the varied requirements of our valuable customers
+                as per their needs and demands.
+                <br><br>
+            </p>
+        </div>
+    </section>
+
+    <section>
+        <div class="key">
+            <div class="key-header">
+                <h3>Some our key points are:</h3>
+            </div>
+            <div class="key-bullets">
+                <ul>
+                    <li>Highly effective services</li>
+                    <li>Expert team of professionals</li>
+                    <li>Customized resolution</li>
+                    <li>Nominal prices</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="satisfaction">
+            <div class="satisfaction-header">
+                <h3>Customer Satisfaction</h3>
+            </div>
+            <div class="satisfaction-text">
+                <p>We are counted among the leading and trustworthy organization of this domain, dedicatedly engaged in rendering highly reliable assortment of renovation and cleaning services. During the rendering of these services, customer satisfaction
+                    is the prime concern of our organization. To satisfy our customer in most trusted manner, we are offering these services as per the demands and needs of our clients. Due to our customer focused approach, we have been able to store
+                    huge number clients in our client base.</p>
+            </div>
+        </div>
+    </section>
+    <br><br>
+    <footer class="footer-distributed">
+
+        <div class="footer-left">
+            <a href="index.html"><img src="https://www.marx-engels.de/images/images_layout/ME_logo_final.png"></a>
+
+            <h3>About<span>sufiyan ENTERPRISES</span></h3>
+
+            <p class="footer-links">
+                <a href="index.html">Home</a> |
+                <a href="gallery.html">Gallery</a> |
+                <a href="AboutUs.html">About</a> |
+                <a href="contact-us.html">Contact</a>
+            </p>
+
+            <p class="footer-company-name">Copyright © 2022, Sufiyan ENTERPRISES - All Rights Reserved.</p>
+        </div>
+
+        <div class="footer-center">
+            <div>
+                <i class="fa fa-map-marker"></i>
+                <p><span>H.N.A 75 GF, Near Thokar No.6, Opp-dda Flats </span> Shaheen Bagh Delhi - 110025</p>
+            </div>
+
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>+91 8010982345</p>
+            </div>
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="mailto:support@eduonix.com">support@kas7860@gmail.com</a></p>
+            </div>
+        </div>
+        <div class="footer-right">
+            <p class="footer-company-about">
+                <span>About the company</span> we are offering optimum quality Cleaning Services, Renovation Services, Housekeeping Services, Facility Management Services, Security Manpower Services, Security Guard Services and Office Support Services
+                for our valued customers.</p>
+            <div class="footer-icons">
+                <a href="https://www.facebook.com" target=_blank><i class=" fa fa-facebook " ></i></a>
+                <a href="https://www.twitter.com " target=_blank><i class="fa fa-twitter "></i></a>
+                <a href="https://www.instagram.com" target=_blank><i class=" fa fa-instagram "></i></a>
+
+                <a href="https://www.youtube.com " target=_blank><i class="fa fa-youtube "></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="scroll-btn">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    </div>
+
+
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
+
+        document.querySelector(".scroll-btn").addEventListener("click", () => {
+            document.querySelector("html").style.scrollBehavior = "smooth";
+            setTimeout(() => {
+                document.querySelector("html").style.scrollBehavior = "unset";
+            }, 1000);
+        });
+    </script>
+
+</body>
+
+</html>
